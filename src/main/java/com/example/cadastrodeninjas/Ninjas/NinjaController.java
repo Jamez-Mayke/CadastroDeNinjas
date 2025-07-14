@@ -1,4 +1,4 @@
-package com.example.cadastrodeninjas;
+package com.example.cadastrodeninjas.Ninjas;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
