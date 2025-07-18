@@ -1,2 +1,4 @@
-package com.example.cadastrodeninjas.Ninjas;public class NinjaRepository {
+package com.example.cadastrodeninjas.Ninjas;
+
+public class NinjaRepository {
 }
