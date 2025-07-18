@@ -1,4 +1,4 @@
-package com.example.cadastrodeninjas;
+package com.example.cadastrodeninjas.Ninjas;
 
 import com.example.cadastrodeninjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
