@@ -20,6 +20,9 @@ target/
 *.ipr
 .DS_Store
 
+## Application ##
+.env
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
