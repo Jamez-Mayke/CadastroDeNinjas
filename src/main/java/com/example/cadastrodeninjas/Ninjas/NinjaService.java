@@ -9,14 +9,17 @@ import java.util.Optional;
 public class NinjaService {
 
     private final NinjaRepository ninjaRepository;
+    private final NinjaMapper ninjaMapper;
 
-    public NinjaService(NinjaRepository ninjaRepository) {
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
-    // Criar o ninja
-    public NinjaModel criarNinja(NinjaModel ninja) {
-        return ninjaRepository.save(ninja);
+    public NinjaDTO criarNinja(NinjaDTO ninja) {
+        NinjaModel ninjaModel = ninjaMapper.toModel(ninja);
+        ninjaModel = ninjaRepository.save(ninjaModel);
+        return ninjaMapper.toDTO(ninjaModel);
     }
 
     // Listar todos os meus ninjas
