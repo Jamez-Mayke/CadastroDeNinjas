@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/boasvindas")
-public class Controller {
+public class NinjaController {
 
     @GetMapping("/")
     public String exibirMensagem() {
