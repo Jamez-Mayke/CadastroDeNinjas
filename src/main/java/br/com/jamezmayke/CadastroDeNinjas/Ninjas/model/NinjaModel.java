@@ -23,7 +23,7 @@ public class NinjaModel {
     // @ManyToOne Um ninja tem uma única missão
     // Leitura: Muitos ninjas podem ter uma missão
     @ManyToOne
-    @JoinColumn(name = "missoes_id")
+    @JoinColumn(name = "missoes_id") // Foreign key
     private MissoesModel missoes;
 
     public NinjaModel() {
@@ -35,6 +35,14 @@ public class NinjaModel {
         this.email = email;
         this.idade = idade;
     }
+
+    public NinjaModel(String nome, String email, int idade, MissoesModel missoes) {
+        this.nome = nome;
+        this.email = email;
+        this.idade = idade;
+        this.missoes = missoes;
+    }
+
 
     public Long getId() {
         return id;
@@ -62,6 +70,10 @@ public class NinjaModel {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+    public MissoesModel getMissoes() {
+        return missoes;
     }
 
 }

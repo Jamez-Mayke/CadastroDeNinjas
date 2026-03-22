@@ -9,7 +9,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "tb_missoes")
 public class MissoesModel {
@@ -25,7 +31,5 @@ public class MissoesModel {
     // Leitura: Uma missão pode ter muitos ninjas
     @OneToMany(mappedBy = "missoes")
     private List<NinjaModel> ninja;
-
-
 
 }
