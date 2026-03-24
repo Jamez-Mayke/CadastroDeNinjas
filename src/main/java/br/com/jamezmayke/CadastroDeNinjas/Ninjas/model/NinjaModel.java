@@ -1,6 +1,6 @@
 package br.com.jamezmayke.CadastroDeNinjas.Ninjas.model;
 
-import br.com.jamezmayke.CadastroDeNinjas.Missoes.MissoesModel;
+import br.com.jamezmayke.CadastroDeNinjas.Missoes.model.MissoesModel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +21,10 @@ public class NinjaModel {
 
     @Column(unique = true)
     private String email;
+
+    @Column(name = "img_url")
+    private String imgUrl;
+    
     private int idade;
 
     // @ManyToOne Um ninja tem uma única missão

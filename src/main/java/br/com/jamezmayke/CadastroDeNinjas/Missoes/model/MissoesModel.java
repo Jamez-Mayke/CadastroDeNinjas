@@ -1,4 +1,4 @@
-package br.com.jamezmayke.CadastroDeNinjas.Missoes;
+package br.com.jamezmayke.CadastroDeNinjas.Missoes.model;
 
 import java.util.List;
 
