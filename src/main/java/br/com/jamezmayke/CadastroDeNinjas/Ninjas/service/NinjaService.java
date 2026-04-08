@@ -1,6 +1,7 @@
 package br.com.jamezmayke.CadastroDeNinjas.Ninjas.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,11 @@ public class NinjaService {
 
     public List<NinjaModel> listarTodosOsNinjas() {
         return ninjaRepository.findAll();
+    }
+
+    public NinjaModel listarNinjaPorId(Long id) {
+        Optional<NinjaModel> ninjaExists = ninjaRepository.findById(id);
+        return ninjaExists.orElse(null);
     }
 
 }
