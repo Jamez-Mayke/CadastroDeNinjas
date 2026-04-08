@@ -2,6 +2,8 @@ package br.com.jamezmayke.CadastroDeNinjas.Missoes.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.jamezmayke.CadastroDeNinjas.Ninjas.model.NinjaModel;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,8 +30,9 @@ public class MissoesModel {
     // Agora, temos que fazer a relação dessa tabela de missoes com o nosso ninja
     // para associarmos ele a uma missão.
     // Uma missão pode ter vários ninjas.
-    // Leitura: Uma missão pode ter muitos ninjas
+    // Leitura: Uma missão pode ter msuitos ninjas
     @OneToMany(mappedBy = "missoes")
+    @JsonIgnore
     private List<NinjaModel> ninja;
 
 }
