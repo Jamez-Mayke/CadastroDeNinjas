@@ -50,6 +50,14 @@ public class NinjaModel {
         this.missoes = missoes;
     }
 
+    public NinjaModel(String nome, String email, int idade, String imgUrl, MissoesModel missoes) {
+        this.nome = nome;
+        this.email = email;
+        this.idade = idade;
+        this.imgUrl = imgUrl;
+        this.missoes = missoes;
+    }
+
 
     public Long getId() {
         return id;
@@ -77,6 +85,14 @@ public class NinjaModel {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public MissoesModel getMissoes() {

@@ -26,4 +26,9 @@ public class NinjaService {
         return ninjaExists.orElse(null);
     }
 
+    // Método para criar o ninja no banco de dados
+    public NinjaModel criarNinja(NinjaModel ninja) {
+        return ninjaRepository.save(ninja);
+    }
+
 }
