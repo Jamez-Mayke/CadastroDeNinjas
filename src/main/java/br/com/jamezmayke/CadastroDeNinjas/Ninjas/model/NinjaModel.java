@@ -83,6 +83,10 @@ public class NinjaModel {
         return idade;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setIdade(int idade) {
         this.idade = idade;
     }
