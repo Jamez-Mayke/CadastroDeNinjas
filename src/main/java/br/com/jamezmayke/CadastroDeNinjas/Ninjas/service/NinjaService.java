@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import br.com.jamezmayke.CadastroDeNinjas.Ninjas.NinjaDTO;
+import br.com.jamezmayke.CadastroDeNinjas.Ninjas.NinjaMapper;
 import br.com.jamezmayke.CadastroDeNinjas.Ninjas.model.NinjaModel;
 import br.com.jamezmayke.CadastroDeNinjas.Ninjas.repository.NinjaRepository;
 
@@ -12,9 +14,11 @@ import br.com.jamezmayke.CadastroDeNinjas.Ninjas.repository.NinjaRepository;
 public class NinjaService {
     
     private final NinjaRepository ninjaRepository;
+    private NinjaMapper ninjaMapper;
 
-    public NinjaService(NinjaRepository ninjaRepository) {
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
     public List<NinjaModel> listarTodosOsNinjas() {
@@ -27,8 +31,10 @@ public class NinjaService {
     }
 
     // Método para criar o ninja no banco de dados
-    public NinjaModel criarNinja(NinjaModel ninja) {
-        return ninjaRepository.save(ninja);
+    public NinjaDTO criarNinja(NinjaDTO ninjaDTO) {
+        NinjaModel ninjaModel = ninjaMapper.map(ninjaDTO);
+        ninjaModel = ninjaRepository.save(ninjaModel);
+        return ninjaMapper.map(ninjaModel);
     }
 
     // Método para deletar um Ninja por ID - Tem que ser um método VOID
