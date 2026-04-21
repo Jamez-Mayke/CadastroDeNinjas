@@ -27,6 +27,8 @@ public class NinjaModel {
     
     private int idade;
 
+    private String rank;
+
     // @ManyToOne Um ninja tem uma única missão
     // Leitura: Muitos ninjas podem ter uma missão
     @ManyToOne
@@ -58,6 +60,14 @@ public class NinjaModel {
         this.missoes = missoes;
     }
 
+    public NinjaModel(String nome, String email, int idade, String rank, String imgUrl, MissoesModel missoes) {
+        this.nome = nome;
+        this.email = email;
+        this.idade = idade;
+        this.rank = rank;
+        this.imgUrl = imgUrl;
+        this.missoes = missoes;
+    }
 
     public Long getId() {
         return id;
@@ -91,6 +101,14 @@ public class NinjaModel {
         this.idade = idade;
     }
 
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
     public String getImgUrl() {
         return imgUrl;
     }
@@ -102,5 +120,11 @@ public class NinjaModel {
     public MissoesModel getMissoes() {
         return missoes;
     }
+
+    public void setMissoes(MissoesModel missoes) {
+        this.missoes = missoes;
+    }
+
+    
 
 }
