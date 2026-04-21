@@ -2,6 +2,7 @@ package br.com.jamezmayke.CadastroDeNinjas.Ninjas.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -21,13 +22,16 @@ public class NinjaService {
         this.ninjaMapper = ninjaMapper;
     }
 
-    public List<NinjaModel> listarTodosOsNinjas() {
-        return ninjaRepository.findAll();
+    public List<NinjaDTO> listarTodosOsNinjas() {
+        List<NinjaModel> ninjas = ninjaRepository.findAll();
+        return ninjas.stream()
+            .map(ninjaMapper::map)
+            .collect(Collectors.toList());
     }
 
-    public NinjaModel listarNinjaPorId(Long id) {
+    public NinjaDTO listarNinjaPorId(Long id) {
         Optional<NinjaModel> ninjaExists = ninjaRepository.findById(id);
-        return ninjaExists.orElse(null);
+        return ninjaExists.map(ninjaMapper::map).orElse(null);
     }
 
     // Método para criar o ninja no banco de dados
@@ -43,10 +47,15 @@ public class NinjaService {
     }
 
     // Atualizar ninja por ID
-    public NinjaModel atualizarNinjaPorId(Long id, NinjaModel novosDadosNinja) {
-        if(ninjaRepository.existsById(id)) {
-            novosDadosNinja.setId(id);
-            return ninjaRepository.save(novosDadosNinja);
+    public NinjaDTO atualizarNinjaPorId(Long id, NinjaDTO novosDadosNinja) {
+        Optional<NinjaModel> ninja = ninjaRepository.findById(id);
+
+        if(ninja.isPresent()) {
+            NinjaModel ninjaAtualizado = ninjaMapper.map(novosDadosNinja);
+            ninjaAtualizado.setId(id);
+
+            NinjaModel ninjaSalvo = ninjaRepository.save(ninjaAtualizado);
+            return ninjaMapper.map(ninjaSalvo);
         }
         return null;
     }
